@@ -278,9 +278,45 @@ const biggerNum = (num, arr) =>{
 
 //20. Write a javascript function that generats a string id(specified length) of random characters.
 
+const randomId = (input) =>{
+    let text = '';
+    let char_list = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvxwyz0123456789';
+    for(let i = 0; i < input; i++){
+        text += char_list.charAt(Math.floor(Math.random() * char_list.length));
+    }
+    return text;
+}
+//Answer
+// console.log(randomId(61))
+
+
 //21. Write a Javascript function to get all possible subset with a fixed length (for example 2) combinations in an array
 // Sample array: [1,2,3] and subset length is 2
 // Expected output: [[2,1], [3,1], [3,2]]
+const arr = [1,2,3]
+const subset = ( arr = []) =>{
+   arr.sort()
+   const result = [[]]
+   let count, subsetResult, preLength;
+   for(let i = 0; i < arr.length; i++){
+    count = 1;
+    while(arr[i+1] && arr[i+1] == arr[i]){
+        count += 1
+        i++
+    }
+    preLength = result.length;
+    for (let j = 0; j < preLength; j++){
+        subsetResult = result[j].slice()
+        for(let k = 1; k <= count; k++){
+            if (k > 0) subsetResult.push(arr[i])
+            result.push(subsetResult.slice())
+        }
+    }
+   }
+   return result
+}
+//Answer
+// console.log(subset(arr))
 
 //22. Write a Javascript function that accepts two arguments, a string and a letter and the function will count the number of occurances
 // of the specified letter within the string
@@ -296,9 +332,89 @@ const occurence = (str,char) =>{
     }
     return output
 }
-
-console.log(occurence('microsoft.com','o'))
+//Answer
+// console.log(occurence('microsoft.com','o'))
 
 //23. Write a Javasript function to find the first non repeated character.
 // Sample arguments : 'abacddbec'
 // Expected output: 'e'
+let nonRepeated = (str) =>{
+    let splitString = str.split("")
+    let result = ''
+    let count = 0
+
+    for(let i = 0; i < splitString.length; i++){
+        count = 0
+        for(let j = 0; j < splitString.length; j++){
+            if(splitString[i] === splitString[j]){
+                count+= 1
+            }
+        }
+        if ( count < 2){
+            result = splitString[i]
+            break
+        }
+    }
+    return result
+}
+//Answer
+// console.log(nonRepeated('abacddbec'))
+
+//24. Write a Javascript function to apply Bubble Sort Algorithm
+// Sample Array: [12,345,4,546,122,84,98,64,9,1,3223,455,23,234,213]
+// Expected output: [3223, 546, 455, 345, 234, 213, 122, 98, 84, 64, 23,12,9,4,1]
+
+const bubblesort = (arr) =>{
+    for(let i = 0; i < arr.length; i++){
+        for(j = 0; j < arr.length - i - 1; j++){
+            if(arr[j] < arr[j+1]){
+                let temp = arr[j]
+                arr[j] = arr[j + 1]
+                arr[j+1] = temp
+            }
+        }
+    }
+    return arr
+}
+//Answer
+// console.log(bubblesort([12,345,4,546,122,84,98,64,9,1,3223,455,23,234,213]))
+
+//25. Write a Javascript function that accept a list a country names as input and returns the longest country name as output
+//Sample function: Longest_Country_Name(['Australia', "Germany", "United States of America"])
+//Output: 'United States of America'
+
+const Longest_Country_Name = (arr) =>{
+    let longest = ''
+    for(let i = 0; i < arr.length; i++){
+        if(longest.length < arr[i].length){
+            longest = arr[i]
+        }
+    }
+    return longest
+}
+
+console.log(Longest_Country_Name(['Australia', 'Germany', 'United States of America']))
+
+//26. Write a Javascript function to find the longest substring in a given string without repeating characters
+
+const longestSubString = (str) =>{
+    string = ""
+    ss = ""
+    namestring = str.split("")
+    for(i = 0; i < namestring.length; i++){
+        for(j = i; j < namestring.length; j++){
+            if(string.includes(namestring[j]))
+            break
+            else
+            string+=namestring[j]
+        }
+        if(ss.length<string.length)
+        ss = string
+        string = ""
+    }
+    return ss
+}
+//Answer
+// console.log(longestSubString("HelloWorld"))
+
+//27. Write a javascript function that returns the longest palindrome in a given string.
