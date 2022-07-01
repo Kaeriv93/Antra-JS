@@ -417,4 +417,50 @@ const longestSubString = (str) =>{
 //Answer
 // console.log(longestSubString("HelloWorld"))
 
-//27. Write a javascript function that returns the longest palindrome in a given string.
+//27. Write a javascript function that returns the longest palindrome in a given string
+
+const longestPalindrome = (str) =>{
+    let max_length = 0
+    let maxp = ''
+
+    for(let i = 0; i < str.length; i++){
+        let subs = str.substr(i, str.length)
+        for(let j = subs.length; j>= 0; j--){
+            let sub_subs_str = subs.substr(0,j)
+            if (sub_subs_str.length <= 1)
+            continue
+            if(isPalinDrome(sub_subs_str)){
+                if(sub_subs_str.length > max_length){
+                    max_length = sub_subs_str.length
+                    maxp = sub_subs_str
+                }
+            }
+        }
+    }
+    return maxp
+}
+//Answer
+// console.log(longestPalindrome('bananas'))
+
+//28. Write a javascript program to pass a 'Javascript function' as a parameter
+
+function hello(){
+    return 'Hello'
+}
+
+function firstName(user, func){
+    const message = func()
+    console.log(`${message} ${user}`)
+}
+
+//Answer
+// firstName('Jonny', hello)
+
+//29. Write a Javascript function to get the function name
+
+const funcName = function() {}
+const obj = {
+    func2: function () {}
+}
+console.log(funcName.name)
+console.log(obj.func2.name)
