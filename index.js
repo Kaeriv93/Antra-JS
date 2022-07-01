@@ -227,3 +227,78 @@ const uniqueChar = (str) =>{
 
 //Answer
 // console.log(uniqueChar('thequickbrownfoxjumpsoverthelazydog'))
+
+//17. Write a Javascript function to get the number of occurences of each letter in specified string.
+
+const charCount = (str) =>{
+    let result = {}
+    for(let i = 0; i < str.length; i++){
+        let char = str[i]
+        if(result[char] > 0){
+            result[char]++
+        }else{
+            result[char] = 1
+        }
+    }
+    return result
+}
+//Answer
+// console.log(charCount('Hello'))
+
+//18. Write a function for searching Javascript arrays with a binary search.
+
+const binarySearch = (items, value) =>{
+    let start = 0
+    let last = items.length - 1
+    let middle = Math.floor((last + start)/2)
+    while(items[middle] != value && start < last){
+        if (value < items[middle]){
+            last = middle - 1
+        }else if (value > items[middle]){
+            start = middle + 1
+        }
+        middle = Math.floor((last + start)/2)
+    }
+    return (items[middle] != value) ? -1 : middle;
+}
+
+//19. Write a javascript function that returns array elements larger than a number.
+
+const biggerNum = (num, arr) =>{
+    let result = []
+    for(let i = 0; i < arr.length; i++){
+        if(num < arr[i]){
+            result.push(arr[i])
+        }
+    }
+    return result
+}
+
+// console.log(biggerNum(10,[1,2,11,54,8,9,12]))
+
+//20. Write a javascript function that generats a string id(specified length) of random characters.
+
+//21. Write a Javascript function to get all possible subset with a fixed length (for example 2) combinations in an array
+// Sample array: [1,2,3] and subset length is 2
+// Expected output: [[2,1], [3,1], [3,2]]
+
+//22. Write a Javascript function that accepts two arguments, a string and a letter and the function will count the number of occurances
+// of the specified letter within the string
+// Sample arguments: 'microsoft.com' , 'o'
+// Output: 3
+
+const occurence = (str,char) =>{
+    let output = 0
+    for(let i = 0; i < str.length; i++){
+        if(char === str[i]){
+            output++
+        }
+    }
+    return output
+}
+
+console.log(occurence('microsoft.com','o'))
+
+//23. Write a Javasript function to find the first non repeated character.
+// Sample arguments : 'abacddbec'
+// Expected output: 'e'
