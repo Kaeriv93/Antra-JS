@@ -462,8 +462,8 @@ const funcName = function() {}
 const obj = {
     func2: function () {}
 }
-console.log(funcName.name)
-console.log(obj.func2.name)
+// console.log(funcName.name)
+// console.log(obj.func2.name)
 
 //Bonus Question MyReduce
 //Write a javascript function that does the reduce
@@ -474,5 +474,18 @@ console.log(obj.func2.name)
 //     },0) //initial value is 0
 // }
 Array.prototype.myReduce = function(cb){
-    
+    let initalValue = 0
+    for(let i = 0; i<this.length; i++){
+        cb(initalValue = initalValue + this[i])
+    }
+    return initalValue
 }
+
+const arr1 = [1,2,3] //Sum should be 6
+function sum(arr1){
+    return arr1.myReduce((acc,cur)=>{
+        return acc + cur
+    },0)
+}
+
+console.log(sum(arr1))
