@@ -133,5 +133,68 @@ const matrix = (n) =>{
 // matrix(3)
 
 //11. Write a Javascript Function which will take na array of numbers tored and find the second lowest and second great numbers, respectively.
-//Sample Array [1,2,3,4,5] my test array [4,1,5,3,2]
-//Expecetd Output: 2,4
+//Sample Array [1,2,3,4,5]
+//Expecetd Output: [2,4]
+const secondBigandSmall = (array) =>{
+   let output = []
+    output.push(array[1])
+    output.push(array[array.length-2])
+    return output
+}
+//Answer
+// console.log(secondBigandSmall([1,2,3,4,5]))
+
+//12.Write a Javascript function which says whether a number is perfect.
+const perfectNum = (num) =>{
+    let temp = 0
+    for(let i = 1; i <= num/2; i++){
+        if(num % i === 0){
+            temp += i;
+        }
+    }
+    if(temp === num && temp !== 0){
+        return true
+    } else{
+        return false
+    }
+}
+//Answer
+// console.log(perfectNum(28))
+
+//13. Write a javascript function to computer the factors of a positive integer
+
+const factors = (n) =>{
+    let num_factors = [], i;
+    for(i = 1; i <= Math.floor(Math.sqrt(n)); i+=1){
+        if(n % i === 0){
+            num_factors.push(i)
+            if(n / i !==i){
+                num_factors.push(n / i);
+            }
+        }
+        num_factors.sort(function(a,b)
+        {
+            return a - b;});
+        }
+        return num_factors;
+}
+//Answer
+// console.log(factors(15))
+
+//14. Write a Javascript function to conver an amount to coins.
+//Example 46[25,10,5,2,1] Output: 25,10,10,1
+
+const amountToCoins = (num, coins) =>{
+    let output = []
+    coins = [25,10,5,2,1]
+    for(let i = 0; i < coins.length; i++){
+        while(num >= coins[i]){
+            num -= coins[i]
+            output.push(coins[i])
+        }   
+
+    }
+    return output
+}
+//Answer
+// console.log(amountToCoins(46))
