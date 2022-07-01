@@ -464,3 +464,15 @@ const obj = {
 }
 console.log(funcName.name)
 console.log(obj.func2.name)
+
+//Bonus Question MyReduce
+//Write a javascript function that does the reduce
+// const arr = [1,2,3] // sum is 6
+// function sum(arr){
+//     return arr.reduce((acc, cur)=>{
+//         return acc + cur
+//     },0) //initial value is 0
+// }
+Array.prototype.myReduce = function(cb){
+    
+}
