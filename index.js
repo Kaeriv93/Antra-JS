@@ -198,3 +198,32 @@ const amountToCoins = (num, coins) =>{
 }
 //Answer
 // console.log(amountToCoins(46))
+
+//15. Write a Javascript function to compute the value of bn where n is the exponent
+// and b is the bases. Accept b and n from the user and display the result
+
+const exponent = (b,n) =>{
+    let ans = 1
+    for (let i = 1; i <= n; i++){
+        ans = b *ans
+    }
+    return ans
+}
+//Answer
+// console.log(exponent(2,4))
+
+//16. Write a Javascript function to extract unique characters from a string.
+//Example string: 'thequickbrownfoxjumpsoverthelazydog"
+//Expected Output: 'thequickbrownfxjmpsvlazydg'
+const uniqueChar = (str) =>{
+    let unique = ""
+    for(let i = 0; i < str.length; i ++){
+        if(unique.includes(str[i]) === false){
+            unique += str[i]
+        }
+    }
+    return unique
+}
+
+//Answer
+// console.log(uniqueChar('thequickbrownfoxjumpsoverthelazydog'))
