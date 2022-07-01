@@ -476,7 +476,7 @@ const obj = {
 Array.prototype.myReduce = function(cb){
     let initalValue = 0
     for(let i = 0; i<this.length; i++){
-        cb(initalValue = initalValue + this[i])
+        cb(initalValue += this[i])
     }
     return initalValue
 }
